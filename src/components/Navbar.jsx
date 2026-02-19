@@ -10,7 +10,7 @@ function Navbar() {
   return (
     <div className='flex items-center justify-between py-5 font-medium '>
         
-        <img src={assets.logo} alt="logo" className='w-36' />
+        <img src={assets.logo} alt="logo" className='w-46' />
 
         <ul className='hidden sm:flex text-sm gap-5 text-slate-700'>
 
@@ -56,6 +56,31 @@ function Navbar() {
         </div>
 
         <div className={`absolute top-0 right-0 bottom-0 overflow-hidden bg-white transition-all ${visible ? 'w-full' : 'w-0'}`}>
+
+            <div className='flex flex-col text-gray-600' >
+                <div onClick={() => setVisible(false)} className='flex items-center gap-4 p-4 cursor-pointer'>
+                    <img src={assets.dropdown_icon} alt="close" className='h-4 rotate-180' />
+                    <p>Close</p>
+                </div>
+
+                <NavLink onClick={()=>setVisible(false)} to='/' className='flex flex-col items-center gap-1 py-4 border-t border-slate-200'>
+                <p>Home</p>
+                <hr className='w-1/9 border-none h-[1.5px] bg-slate-700 hidden'/>
+                </NavLink>
+                <NavLink onClick={()=>setVisible(false)} to='/collection' className='flex flex-col items-center gap-1 py-4 border-t border-slate-200'>
+                <p>Collection</p>
+                <hr className='w-1/9 border-none h-[1.5px] bg-slate-700 hidden'/>
+                </NavLink>
+                <NavLink onClick={()=>setVisible(false)} to='/about' className='flex flex-col items-center gap-1 py-4 border-t border-slate-200'>
+                <p>About</p>
+                <hr className='w-1/9 border-none h-[1.5px] bg-slate-700 hidden'/>
+                </NavLink>
+                 <NavLink onClick={()=>setVisible(false)} to='/contact' className='flex flex-col items-center gap-1 py-4 border-t border-slate-200'>
+                <p>Contact</p>
+                <hr className='w-1/9 border-none h-[1.5px] bg-slate-700 hidden'/>
+                </NavLink>
+
+            </div>
 
         </div>
       

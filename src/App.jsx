@@ -4,8 +4,8 @@ import Home from './pages/Home'
 import Collection from './pages/Collection'
 import About from './pages/About'
 import Cart from './pages/Cart'
-import Navbar from './context/Navbar'
 import Contact from './pages/Contact'
+import Navbar from './components/Navbar'
 
 const App = () => {
   return (
