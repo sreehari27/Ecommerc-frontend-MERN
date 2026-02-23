@@ -8,6 +8,10 @@ a.active hr{
     display: block;
 }
 
+::-webkit-scrollbar{
+  display: none;
+}
+
 .ubuntu-regular {
   font-family: "Ubuntu", sans-serif;
   font-weight: 400;
