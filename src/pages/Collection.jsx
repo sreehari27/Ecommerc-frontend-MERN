@@ -5,7 +5,7 @@ import Title from "../components/Title";
 import ProductItems from "../components/ProductItem";
 
 function Collection() {
-  const { products } = useContext(ShopContext);
+  const { products, search, showSearch } = useContext(ShopContext);
   const [showFilters, setShowFilters] = useState(false);
   const [filterProducts, setFilterProducts] = useState([]);
   const [category, setCategory] = useState([]);
@@ -32,7 +32,12 @@ function Collection() {
 };
 
   const applayFilters = () => {
+
     let updatedProducts = products;
+
+    if(showSearch && search ) {
+      updatedProducts = updatedProducts.filter((item) => item.name.toLowerCase().includes(search.toLowerCase()));
+    }
 
     if (category.length > 0) {
       updatedProducts = updatedProducts.filter((item) => category.includes(item.category));
@@ -66,7 +71,7 @@ function Collection() {
     applayFilters();
     console.log(products);
     
-  }, [category, subCategory]);
+  }, [category, subCategory, search, showSearch]);
 
   return (
     <div className="flex flex-col sm:flex-row gap-1 sm:gap-1 pt-10">
