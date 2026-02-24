@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets';
+import RelatedProducts from '../components/RelatedProducts';
 
 function Product() {
 
@@ -9,6 +10,7 @@ function Product() {
   const { products, currency } = useContext(ShopContext);
   const [productData, setProductData] = useState(false);
   const [image, setImage] = useState('');
+  const [size, setSize] = useState('');
 
   const getProductData = async () => {
 
@@ -52,9 +54,40 @@ function Product() {
           </div>
           <p className='mt-5 text-3xl font-medium'>{currency} {productData.price}</p>
           <p className='mt-5 md:w-4/5 text-gray-600'>{productData.description}</p>
+          <div className='flex flex-col gap-4 my-8'>
+            <p>Select Size</p>
+            <div className='flex gap-2'>
+              {productData.sizes.map((item, index) => (
+                <button onClick={() => setSize(item)} className={` py-2 px-4 bg-gray-100 ${item === size ? 'border border-orange-500' : ''}`} key={index}>{item}</button>
+              ))}
+            </div>
+          </div>
+          <button className='bg-black text-white px-8 py-3 text-sm active:bg-gray-700'>ADD TO CART</button>
+          <hr className='mt-8 sm:w-4/8' />
+          <div className='text-sm text-gray-500 mt-5 flex flex-col gap-1'>
+            <p>100% original product.</p>
+            <p>Cash on delivery is available on this product.</p>
+            <p>Easy return and exchange policy with in 7 days.</p>
+          </div>
         </div>
-
       </div>
+
+      {/*----------------DEscription and review section--------------- */}
+
+      <div className='mt-20'>
+        <div className='flex'>
+          <b className=' px-5 py-3 text-sm'>Description</b>
+          <p className=' px-5 py-3 text-sm'>Review (120)</p>
+        </div>
+        <div className='flex flex-col gap-4 px-4 py-5 text-sm text-gray-500'>
+          <p>An Ecommer website is a digital platform that allows businesses to sell products or services online. It typically includes features like product listings, shopping cart functionality, secure payment processing, and user account management.</p>
+          <p>Customers can browse through the website, add items to their cart, and complete purchases using various payment methods. E-commerce websites can be used for a wide range of products and services, from physical goods to digital downloads and subscriptions.</p>
+        </div>
+      </div>
+
+      {/*-----------------Related products section------------------ */}
+      
+      <RelatedProducts category={productData.category} subCategory={productData.subCategory} />
 
     </div>
   ) : (
