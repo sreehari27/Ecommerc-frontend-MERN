@@ -6,7 +6,7 @@ import { ShopContext } from '../context/ShopContext';
 function Navbar() {
 
     const [visible, setVisible] = useState(false);
-    const {setShowSearch} = useContext(ShopContext);
+    const {setShowSearch, cartItems} = useContext(ShopContext);
 
 
   return (
@@ -51,7 +51,7 @@ function Navbar() {
 
             <Link to='/cart' className='relative'>
             <img src={assets.cart_icon} alt="cart" className='w-5 min-w-5 cursor-pointer' />
-            <p className='text-xs text-white bg-slate-700 rounded-full w-4 h-4 flex items-center justify-center absolute -bottom-2 -right-2'>3</p> 
+            <p className='text-xs text-white bg-slate-700 rounded-full w-4 h-4 flex items-center justify-center absolute -bottom-2 -right-2'>{Object.values(cartItems).reduce((total, item) => total + Object.values(item).reduce((sum, count) => sum + count, 0), 0)}</p> 
             </Link>
 
             <img onClick={() => setVisible(true)} src={assets.menu_icon} alt="menu" className='w-5 cursor-pointer sm:hidden' />
