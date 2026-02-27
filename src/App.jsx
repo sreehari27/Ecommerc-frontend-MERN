@@ -10,6 +10,8 @@ import Product from './pages/Product'
 import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 import { ToastContainer, toast } from 'react-toastify';
+import PlaceOrder from './pages/PlaceOrder'
+import Order from './pages/Order'
 
 const App = () => {
   return (
@@ -26,6 +28,8 @@ const App = () => {
         <Route path='/contact' element={<Contact />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/product/:productId' element={<Product />} />
+        <Route path='/place-order' element={<PlaceOrder />} />
+        <Route path='/order' element={<Order/>} /> {/* Placeholder for Orders page */}
 
       </Routes>
       <Footer />
